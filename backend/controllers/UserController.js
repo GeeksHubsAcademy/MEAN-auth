@@ -1,5 +1,7 @@
 import UserModel from '../models/User.js'
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+
 const UserController = {
     async register(req, res) {
         try {
@@ -8,7 +10,47 @@ const UserController = {
             res.status(201).send(user)
         } catch (error) {
             console.error(error)
-            res.status(500).send({ message: 'There was an error trying to create the user', error });
+            res.status(500).send({
+                message: 'There was an error trying to create the user',
+                error
+            });
+        }
+    },
+    async login(req, res) {
+        try {
+
+            const user = await UserModel.findOne({
+                email: req.body.email
+            });
+            if (!user) {
+                return res.status(400).send({
+                    message: 'Wrong credentials'
+                });
+            }
+            const isMatch = await bcrypt.compare(req.body.password, user.password);
+            if (!isMatch) {
+                return res.status(400).send({
+                    message: 'Wrong credentials'
+                });
+            }
+            const token = jwt.sign({
+                _id: user._id
+            }, 'miSecretito');
+            await UserModel.findByIdAndUpdate(user._id, {
+                $push: {
+                    tokens: token
+                }
+            })
+            res.send({
+                user,
+                token
+            })
+        } catch (error) {
+            console.error(error)
+            res.status(500).send({
+                message: 'There was an error trying to log in the user',
+                error
+            });
         }
     }
 }

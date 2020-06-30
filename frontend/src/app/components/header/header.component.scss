@@ -1,0 +1,13 @@
+@import '../../../colors.scss';
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: $solid;
+    padding: 1em;
+    a {
+        all: unset;
+        color: black;
+        padding: 1em;
+        cursor: pointer;
+    }
+}

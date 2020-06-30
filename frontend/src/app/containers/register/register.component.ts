@@ -8,17 +8,19 @@ import { User } from '../../models/user.model';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
-
+export class RegisterComponent {
+  errorMsg: string;
   constructor(public userService: UserService) { }
 
-  ngOnInit(): void {
-  }
   register(registerForm: NgForm): void {
-    if (registerForm.valid) {
-      const user: User = registerForm.value;
-      this.userService.register(user)
-        .subscribe(console.log);
+    console.log(registerForm);
+    if (!registerForm.valid) {
+      setTimeout(() => this.errorMsg = '', 2500);
+      this.errorMsg = 'Revisa tus campos';
+      return;
     }
+    const user: User = registerForm.value;
+    this.userService.register(user)
+      .subscribe(console.log);
   }
 }
