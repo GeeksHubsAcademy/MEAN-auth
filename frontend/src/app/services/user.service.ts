@@ -27,11 +27,7 @@ export class UserService {
   }
 
   logout(): void {
-    this.httpClient.get(this.API_URL + '/users/logout', {
-      headers: {
-        authorization: localStorage.getItem('authToken')
-      }
-    }).subscribe(console.log);
+    this.httpClient.get(this.API_URL + '/users/logout' ).subscribe(console.log);
     this.setUser(null);
     localStorage.removeItem('user');
     localStorage.removeItem('authToken');

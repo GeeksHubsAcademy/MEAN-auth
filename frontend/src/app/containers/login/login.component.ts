@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Credentials } from 'src/app/interfaces/credentials';
 import { HttpResponse } from '@angular/common/http';
 import { Login } from 'src/app/interfaces/login';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { Login } from 'src/app/interfaces/login';
 })
 export class LoginComponent {
 
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService, private router:Router) { }
 
   login(loginForm: NgForm): void {
     if (loginForm.valid) {
@@ -22,8 +23,11 @@ export class LoginComponent {
           localStorage.setItem('authToken', res.token);
           localStorage.setItem('user', JSON.stringify(res.user));
           this.userService.setUser(res.user);
+          setTimeout(() => {
+            this.router.navigate(['/']);
+          }, 1500);
         }, error => {
-          console.log('error');
+          console.log(error);
         });
     }
   }
