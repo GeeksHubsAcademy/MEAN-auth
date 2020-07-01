@@ -1,10 +1,11 @@
 import express from 'express';
-import MovieController from '../controllers/MovieController.js'
+import MovieController from '../controllers/MovieController.js';
+import { auth } from '../middleware/auth.js'
 const router = express.Router();
 
-router.get('/', MovieController.getAll);
-router.post('/', MovieController.insert);
-router.put('/:id', MovieController.update);
-router.delete('/:id', MovieController.delete);
+router.get('/', auth, MovieController.getAll);
+router.post('/', auth, MovieController.insert);
+router.put('/:id', auth, MovieController.update);
+router.delete('/:id', auth, MovieController.delete);
 
 export default router;

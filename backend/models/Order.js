@@ -3,7 +3,8 @@ const ObjectId = mongoose.Types.ObjectId;
 const OrderSchema = new mongoose.Schema({
     userId: ObjectId,
     movieIds: [ObjectId],
-    deliveryDate: Date
+    deliveryDate: Date,
+    returnDate: Date
 }, { timestamps: true });
 
 const OrderModel = mongoose.model('Order', OrderSchema);

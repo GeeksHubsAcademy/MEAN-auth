@@ -1,3 +1,4 @@
+//necesaria versión Node 14.3+
 import mysql from 'mysql2/promise.js';
 import './config/mongoose.js';
 import MovieModel from './models/Movie.js';

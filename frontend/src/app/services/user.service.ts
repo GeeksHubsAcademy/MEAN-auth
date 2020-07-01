@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
   API_URL: string = environment.API_URL;
+  private user: User;
   constructor(private httpClient: HttpClient) { }
 
   register(user: User): Observable<User> {
@@ -17,5 +18,11 @@ export class UserService {
   }
   login(credentials: Credentials): Observable<Login> {
     return this.httpClient.post<Login>(this.API_URL + '/users/login', credentials);
+  }
+  setUser(user: User): void {
+    this.user = user;
+  }
+  getUser(): User {
+    return this.user;
   }
 }
