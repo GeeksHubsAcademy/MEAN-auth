@@ -19,6 +19,9 @@ export class HeaderComponent implements OnInit {
     return this.userService.getUser();
   }
   logout(): void {
-
+    this.userService.logout();
+    this.userService.setUser(null);
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
   }
 }

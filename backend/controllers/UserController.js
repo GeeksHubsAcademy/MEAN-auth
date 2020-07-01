@@ -52,6 +52,22 @@ const UserController = {
                 error
             });
         }
+    },
+    async logout(req, res) {
+        try {
+            await UserModel.findByIdAndUpdate(req.user._id, {
+                $pull: {
+                    tokens: req.headers.authorization
+                }
+            });
+            res.send({ message: 'Successfully logged out' })
+        } catch (error) {
+            console.error(error)
+            res.status(500).send({
+                message: 'There was an error trying to log out the user',
+                error
+            });
+        }
     }
 }
 

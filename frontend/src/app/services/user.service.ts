@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { User } from '../models/user.model';
 import { Login } from '../interfaces/login';
@@ -24,5 +24,16 @@ export class UserService {
   }
   getUser(): User {
     return this.user;
+  }
+
+  logout(): void {
+    this.httpClient.get(this.API_URL + '/users/logout', {
+      headers: {
+        authorization: localStorage.getItem('authToken')
+      }
+    }).subscribe(console.log);
+    this.setUser(null);
+    localStorage.removeItem('user');
+    localStorage.removeItem('authToken');
   }
 }
