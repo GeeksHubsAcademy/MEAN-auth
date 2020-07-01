@@ -12,9 +12,13 @@ export class HeaderComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    console.log('soy el header')
   }
 
   getUser(): User {
     return this.userService.getUser();
+  }
+  logout(): void {
+
   }
 }

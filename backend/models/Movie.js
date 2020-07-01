@@ -7,7 +7,7 @@ const MovieSchema = new mongoose.Schema({
     },
     popularity: Number,
     poster_path: String,
-    genre_ids: [Number],
+    genre_ids: [ObjectId],
     overview: String,
 }, );
 

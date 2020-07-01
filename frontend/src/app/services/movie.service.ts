@@ -8,14 +8,30 @@ import { Observable } from 'rxjs';
 })
 export class MovieService {
   API_URL = environment.API_URL;
+  private movies: Movie[] = [];
   constructor(private httpClient: HttpClient) { }
-  getAll(): Observable<Movie[]> {
+  // getAll(): Observable<Movie[]> {
+  //   // const headers = new HttpHeaders();
+  //   // headers.set('authorization', localStorage.getItem('authToken'));
+  //   return this.httpClient.get<Movie[]>(this.API_URL + '/movies', {
+  //     headers: {
+  //       authorization: localStorage.getItem('authToken')
+  //     }
+  //   });
+  // }
+  getByPage(page: number): Observable<Movie[]> {
     // const headers = new HttpHeaders();
     // headers.set('authorization', localStorage.getItem('authToken'));
-    return this.httpClient.get<Movie[]>(this.API_URL + '/movies', {
+    return this.httpClient.get<Movie[]>(this.API_URL + '/movies/page/' + page, {
       headers: {
         authorization: localStorage.getItem('authToken')
       }
     });
+  }
+  setMovies(movies: Movie[]): void {
+    this.movies = movies;
+  }
+  getMovies(): Movie[] {
+    return this.movies;
   }
 }

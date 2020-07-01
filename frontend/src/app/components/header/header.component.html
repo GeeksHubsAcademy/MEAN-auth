@@ -1,7 +1,8 @@
 <header>
     <div class="movies">
-        <a routerLink="movies/popular">Popular Movies</a>
-        <a [routerLink]="['movies','top-rated']">Top rated Movies</a>
+        <a routerLink="/">Movies</a>
+        <!-- <a routerLink="movies/popular">Popular Movies</a>
+        <a [routerLink]="['movies','top-rated']">Top rated Movies</a> -->
     </div>
 
     <div class="guestZone" *ngIf="!getUser()">

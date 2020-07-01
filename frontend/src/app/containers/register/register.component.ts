@@ -10,8 +10,7 @@ import { User } from '../../models/user.model';
 })
 export class RegisterComponent {
   errorMsg: string;
-  constructor(public userService: UserService) { }
-
+  constructor(public userService: UserService) {}
   register(registerForm: NgForm): void {
     console.log(registerForm);
     if (!registerForm.valid) {

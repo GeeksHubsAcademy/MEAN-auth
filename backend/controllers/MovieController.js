@@ -11,6 +11,19 @@ const MovieController = {
                 })
             })
     },
+    getByPage(req, res) {
+        const { page } = req.params;
+        const skip = (page - 1) * 20
+        MovieModel.find()
+            .skip(skip).limit(20)
+            .then(movies => res.send(movies))
+            .catch(error => {
+                console.error(error);
+                res.status(500).send({
+                    message: 'There was a problem trying to get the movies'
+                })
+            })
+    },
     insert(req, res) {
         MovieModel.create(req.body)
             .then(movie => res.status(201).send(movie))
