@@ -9,6 +9,8 @@ import { Movie } from 'src/app/models/movie.model';
 })
 export class MoviesComponent implements OnInit {
   page = 1;
+  showModal: boolean;
+  currentMovie: Movie;
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
@@ -17,14 +19,21 @@ export class MoviesComponent implements OnInit {
   getMovies(): Movie[] {
     return this.movieService.getMovies();
   }
-  getByPage() {
+  getByPage(): void {
     this.movieService.getByPage(this.page)
       .subscribe(movies => {
         this.movieService.setMovies(movies);
       });
   }
-  nextPage() {
+  nextPage(): void {
     this.page++;
     this.getByPage();
+  }
+  showMovieModalDetail(movie: Movie): void {
+    this.showModal = true;
+    this.currentMovie = movie;
+  }
+  closeMovieModalDetail(): void {
+    this.showModal = false;
   }
 }

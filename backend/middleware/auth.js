@@ -23,3 +23,9 @@ export const auth = async(req, res, next) => {
         });
     }
 }
+export const isAdmin = (req, res, next) => {
+    if (req.user.role !== 'admin') {
+        return res.status(403).send({ message: "You don't have enough privilegies" })
+    }
+    next();
+}

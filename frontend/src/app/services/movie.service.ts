@@ -22,11 +22,7 @@ export class MovieService {
   getByPage(page: number): Observable<Movie[]> {
     // const headers = new HttpHeaders();
     // headers.set('authorization', localStorage.getItem('authToken'));
-    return this.httpClient.get<Movie[]>(this.API_URL + '/movies/page/' + page, {
-      headers: {
-        authorization: localStorage.getItem('authToken')
-      }
-    });
+    return this.httpClient.get<Movie[]>(this.API_URL + '/movies/page/' + page);
   }
   setMovies(movies: Movie[]): void {
     this.movies = movies;

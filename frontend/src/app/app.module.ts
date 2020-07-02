@@ -9,14 +9,16 @@ import { RegisterComponent } from './containers/register/register.component';
 import { LoginComponent } from './containers/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MoviesComponent } from './containers/movies/movies.component';
-import { AuthInterceptor } from './interceptors/auth.interceptor'
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { MovieModalComponent } from './components/movie-modal/movie-modal.component'
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
     HeaderComponent,
-    MoviesComponent
+    MoviesComponent,
+    MovieModalComponent
   ],
   imports: [
     BrowserModule,

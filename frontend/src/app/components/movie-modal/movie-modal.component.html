@@ -1,0 +1,13 @@
+<div class="contenedor">
+    <div class="overlay" id="overlay" [ngClass]="{active: showModal}">
+        <div class="popup" id="popup" [ngClass]="{active: showModal}">
+            <a href="#" id="btn-cerrar-popup" (click)="closeModal()" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+            <h3>{{movie.title}}</h3>
+            <img src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}" alt="">
+            <p>{{movie.overview}}</p>
+            <form action="">
+                <input type="submit" class="btn-submit" value="Rent">
+            </form>
+        </div>
+    </div>
+</div>

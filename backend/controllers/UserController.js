@@ -6,6 +6,7 @@ const UserController = {
     async register(req, res) {
         try {
             req.body.password = await bcrypt.hash(req.body.password, 10);
+            req.body.role = 'user';
             const user = await UserModel.create(req.body);
             res.status(201).send(user)
         } catch (error) {
@@ -60,7 +61,9 @@ const UserController = {
                     tokens: req.headers.authorization
                 }
             });
-            res.send({ message: 'Successfully logged out' })
+            res.send({
+                message: 'Successfully logged out'
+            })
         } catch (error) {
             console.error(error)
             res.status(500).send({

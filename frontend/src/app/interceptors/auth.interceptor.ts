@@ -20,7 +20,6 @@ export class AuthInterceptor implements HttpInterceptor {
         authorization: token
       }
     });
-    console.log(token);
     return token ? next.handle(cRequest) : next.handle(request);
   }
 }
