@@ -5,6 +5,7 @@
             <h3>{{movie.title}}</h3>
             <img src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}" alt="">
             <p>{{movie.overview}}</p>
+            <p>{{movie.release_date | date:'EEEE, MMMM d, y' }}</p>
             <form action="">
                 <input type="submit" class="btn-submit" value="Rent">
             </form>

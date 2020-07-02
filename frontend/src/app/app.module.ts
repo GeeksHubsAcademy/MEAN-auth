@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID  } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeES from '@angular/common/locales/es-AR';
+
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -11,6 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { MoviesComponent } from './containers/movies/movies.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { MovieModalComponent } from './components/movie-modal/movie-modal.component'
+registerLocaleData(localeES);
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +35,8 @@ import { MovieModalComponent } from './components/movie-modal/movie-modal.compon
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    { provide: LOCALE_ID, useValue: "es-AR" },
   ],
   bootstrap: [AppComponent]
 })
