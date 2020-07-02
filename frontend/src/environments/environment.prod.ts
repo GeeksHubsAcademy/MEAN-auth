@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_URL: 'https://mi-api-auth-mongo.herokuapp.com'
+  API_URL: 'https://movie-mongo.herokuapp.com'
 };

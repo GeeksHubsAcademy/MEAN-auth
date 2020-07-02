@@ -3,8 +3,9 @@
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve --open",
-        "build": "ng build",
+        "start": "serve dist/frontend",
+        "dev": "ng serve --open",
+        "build": "ng build --prod",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e"
@@ -20,14 +21,16 @@
         "@angular/platform-browser-dynamic": "~10.0.0",
         "@angular/router": "~10.0.0",
         "rxjs": "~6.5.5",
+        "serve": "^11.3.2",
         "tslib": "^2.0.0",
-        "zone.js": "~0.10.3"
-    },
-    "devDependencies": {
+        "zone.js": "~0.10.3",
         "@angular-devkit/build-angular": "~0.1000.0",
         "@angular/cli": "~10.0.0",
         "@angular/compiler-cli": "~10.0.0",
         "@types/node": "^12.11.1",
+        "typescript": "~3.9.5"
+    },
+    "devDependencies": {
         "@types/jasmine": "~3.5.0",
         "@types/jasminewd2": "~2.0.3",
         "codelyzer": "^6.0.0-next.1",
@@ -40,7 +43,6 @@
         "karma-jasmine-html-reporter": "^1.5.0",
         "protractor": "~7.0.0",
         "ts-node": "~8.3.0",
-        "tslint": "~6.1.0",
-        "typescript": "~3.9.5"
+        "tslint": "~6.1.0"
     }
 }
