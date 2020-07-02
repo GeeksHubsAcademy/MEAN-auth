@@ -1,3 +1,4 @@
+<input type="search" (keyup)="searchMovie($event.target.value)">
 <div class="pagination">
     <button class="pageButton">Previous page</button> {{page}}
     <button class="pageButton" (click)="nextPage()">Next page</button>

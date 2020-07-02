@@ -7,8 +7,9 @@ const MovieSchema = new mongoose.Schema({
     },
     popularity: Number,
     poster_path: String,
-    genre_ids: [ObjectId],
+    genre_ids: [],
     overview: String,
+    release_date: Date
 }, );
 
 const MovieModel = mongoose.model('Movie', MovieSchema);

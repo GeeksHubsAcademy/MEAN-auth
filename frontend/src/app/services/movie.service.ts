@@ -30,4 +30,7 @@ export class MovieService {
   getMovies(): Movie[] {
     return this.movies;
   }
+  getByTitle(search: string): Observable<Movie[]> {
+    return this.httpClient.get<Movie[]>(this.API_URL + '/movies/title/' + search);
+  }
 }

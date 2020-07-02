@@ -20,8 +20,5 @@ export class HeaderComponent implements OnInit {
   }
   logout(): void {
     this.userService.logout();
-    this.userService.setUser(null);
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
   }
 }

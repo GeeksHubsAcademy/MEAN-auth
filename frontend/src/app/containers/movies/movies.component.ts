@@ -36,4 +36,12 @@ export class MoviesComponent implements OnInit {
   closeMovieModalDetail(): void {
     this.showModal = false;
   }
+  searchMovie(searchValue: string): void {
+    this.page = 1;
+    if (!searchValue) {
+      return this.getByPage();
+    }
+    this.movieService.getByTitle(searchValue)
+      .subscribe(movies => this.movieService.setMovies(movies));
+  }
 }

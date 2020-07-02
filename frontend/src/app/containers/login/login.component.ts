@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(public userService: UserService, private router:Router) { }
+  constructor(public userService: UserService, private router: Router) { }
 
   login(loginForm: NgForm): void {
     if (loginForm.valid) {

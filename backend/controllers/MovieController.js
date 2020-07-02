@@ -24,6 +24,19 @@ const MovieController = {
                 })
             })
     },
+    getByTitle(req, res) {
+        const title = req.params.title;
+        const titleRegExp = new RegExp(title, 'i');
+        MovieModel.find({ title: titleRegExp })
+            .limit(20)
+            .then(movies => res.send(movies))
+            .catch(error => {
+                console.error(error);
+                res.status(500).send({
+                    message: 'There was a problem trying to get the movies'
+                })
+            })
+    },
     insert(req, res) {
         MovieModel.create(req.body)
             .then(movie => res.status(201).send(movie))
