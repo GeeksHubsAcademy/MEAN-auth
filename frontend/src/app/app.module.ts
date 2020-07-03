@@ -13,7 +13,8 @@ import { LoginComponent } from './containers/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MoviesComponent } from './containers/movies/movies.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { MovieModalComponent } from './components/movie-modal/movie-modal.component'
+import { MovieModalComponent } from './components/movie-modal/movie-modal.component';
+import { CalcComponent } from './calc/calc.component'
 registerLocaleData(localeES);
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ registerLocaleData(localeES);
     LoginComponent,
     HeaderComponent,
     MoviesComponent,
-    MovieModalComponent
+    MovieModalComponent,
+    CalcComponent
   ],
   imports: [
     BrowserModule,
